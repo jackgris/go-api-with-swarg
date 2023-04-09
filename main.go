@@ -9,20 +9,20 @@ import (
 	_ "github.com/jackgris/go-api-with-swarg/docs"
 )
 
-// @title Go + Fiber Todo API
-// @version 1.0
-// @description Sample todo server. You can visit the GitHub repository at https://github.com/jackgris/go-api-with-swarg
+//	@title			Go + Fiber Todo API
+//	@version		1.0
+//	@description	Sample todo server. You can visit the GitHub repository at https://github.com/jackgris/go-api-with-swarg
 
-// @contact.name API Support
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
+//	@contact.name	API Support
+//	@contact.url	http://www.swagger.io/support
+//	@contact.email	support@swagger.io
 
-// @license.name Apache 2.0
-// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+//	@license.name	Apache 2.0
+//	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host localhost:3000
-// @BasePath /
-// @query.collection.format multi
+//	@host						localhost:3000
+//	@BasePath					/
+//	@query.collection.format	multi
 func main() {
 	app := fiber.New()
 	app.Get("/todo", getAllTodos)
@@ -35,23 +35,23 @@ func main() {
 	log.Fatal(app.Listen(":3000"))
 }
 
-// @Summary get all items in the todo list
-// @ID get-all-todos
-// @Produce json
-// @Success 200 {object} todo
-// @Router /todo [get]
+//	@Summary	get all items in the todo list
+//	@ID			get-all-todos
+//	@Produce	json
+//	@Success	200	{object}	todo
+//	@Router		/todo [get]
 func getAllTodos(c *fiber.Ctx) error {
 	c.Status(http.StatusOK)
 	return c.JSON(todoList)
 }
 
-// @Summary get a todo item by ID
-// @ID get-todo-by-id
-// @Produce json
-// @Param id path string true "todo ID"
-// @Success 200 {object} todo
-// @Failure 404 {object} message
-// @Router /todo/{id} [get]
+//	@Summary	get a todo item by ID
+//	@ID			get-todo-by-id
+//	@Produce	json
+//	@Param		id	path		string	true	"todo ID"
+//	@Success	200	{object}	todo
+//	@Failure	404	{object}	message
+//	@Router		/todo/{id} [get]
 func getTodoByID(c *fiber.Ctx) error {
 	ID := c.Params("id")
 
@@ -69,13 +69,13 @@ func getTodoByID(c *fiber.Ctx) error {
 	return c.JSON(r)
 }
 
-// @Summary add a new item to the todo list
-// @ID create-todo
-// @Produce json
-// @Param data body todo true "todo data"
-// @Success 200 {object} todo
-// @Failure 400 {object} message
-// @Router /todo [post]
+//	@Summary	add a new item to the todo list
+//	@ID			create-todo
+//	@Produce	json
+//	@Param		data	body		todo	true	"todo data"
+//	@Success	200		{object}	todo
+//	@Failure	400		{object}	message
+//	@Router		/todo [post]
 func createTodo(c *fiber.Ctx) error {
 	var newTodo todo
 
@@ -92,13 +92,13 @@ func createTodo(c *fiber.Ctx) error {
 	return c.JSON(newTodo)
 }
 
-// @Summary delete a todo item by ID
-// @ID delete-todo-by-id
-// @Produce json
-// @Param id path string true "todo ID"
-// @Success 200 {object} todo
-// @Failure 404 {object} message
-// @Router /todo/{id} [delete]
+//	@Summary	delete a todo item by ID
+//	@ID			delete-todo-by-id
+//	@Produce	json
+//	@Param		id	path		string	true	"todo ID"
+//	@Success	200	{object}	todo
+//	@Failure	404	{object}	message
+//	@Router		/todo/{id} [delete]
 func deleteTodo(c *fiber.Ctx) error {
 	ID := c.Params("id")
 
